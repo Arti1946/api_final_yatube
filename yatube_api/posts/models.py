@@ -7,7 +7,7 @@ User = get_user_model()
 class Group(models.Model):
     title = models.TextField()
     slug = models.SlugField(unique=True)
-    description = models.TextField
+    description = models.TextField()
 
     def __str__(self) -> str:
         return self.title
@@ -20,7 +20,13 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name="posts"
     )
     image = models.ImageField(upload_to="posts/", null=True, blank=True)
-    group = models.IntegerField(null=True)
+    group = models.ForeignKey(
+        Group,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name="posts",
+    )
 
     def __str__(self):
         return self.text

@@ -26,11 +26,6 @@ class PostSerializer(serializers.ModelSerializer):
         fields = "__all__"
         model = Post
 
-    def validate(self, data):
-        if not Group.objects.filter(id=data["group"]).exists():
-            raise serializers.ValidationError("Такой группы нет!")
-        return data
-
 
 class CommentSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(

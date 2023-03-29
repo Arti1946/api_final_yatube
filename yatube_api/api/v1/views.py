@@ -29,10 +29,15 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer.save(author=user)
 
 
-class GroupViewSet(viewsets.ReadOnlyModelViewSet):
+class ListRetrievViewSet(
+    mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet
+):
+    pass
+
+
+class GroupViewSet(ListRetrievViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class CommentViewSet(viewsets.ModelViewSet):

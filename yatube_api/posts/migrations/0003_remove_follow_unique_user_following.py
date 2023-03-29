@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('posts', '0002_auto_20230329_1802'),
+        ("posts", "0002_auto_20230329_1802"),
     ]
 
     operations = [
         migrations.RemoveConstraint(
-            model_name='follow',
-            name='unique_user_following',
+            model_name="follow",
+            name="unique_user_following",
         ),
     ]

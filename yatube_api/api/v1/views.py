@@ -1,13 +1,15 @@
-from rest_framework import viewsets, mixins, filters
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework import filters, mixins, viewsets
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.permissions import (
+    IsAuthenticated, IsAuthenticatedOrReadOnly,
+)
 from rest_framework.serializers import ValidationError
 
 from django.shortcuts import get_object_or_404
 
 from api.permissions import UserActionsPermisiion
 from api.v1.serializers import (
-    CommentSerializer, GroupSerializer, PostSerializer, FollowSerializer
+    CommentSerializer, FollowSerializer, GroupSerializer, PostSerializer,
 )
 from posts.models import Group, Post, User
 
@@ -62,8 +64,9 @@ class CommentViewSet(viewsets.ModelViewSet):
         )
 
 
-class CreateListViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
-                        viewsets.GenericViewSet):
+class CreateListViewSet(
+    mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet
+):
     pass
 
 
@@ -71,7 +74,7 @@ class FollowViewSet(CreateListViewSet):
     serializer_class = FollowSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('following__username',)
+    search_fields = ("following__username",)
 
     def get_queryset(self):
         user = self.request.user

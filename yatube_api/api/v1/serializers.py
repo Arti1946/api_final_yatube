@@ -23,7 +23,7 @@ class PostSerializer(serializers.ModelSerializer):
     image = Base64ImageField(required=False, allow_null=True)
 
     class Meta:
-        fields = "__all__"
+        fields = ("id", "text", "author", "pub_date", "group", "image")
         model = Post
 
 
@@ -35,13 +35,13 @@ class CommentSerializer(serializers.ModelSerializer):
     post = serializers.SlugRelatedField(read_only=True, slug_field="id")
 
     class Meta:
-        fields = "__all__"
+        fields = ("author", "post", "text", "created", "id")
         model = Comment
 
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = "__all__"
+        fields = ("slug", "description", "title", "id")
         model = Group
 
 

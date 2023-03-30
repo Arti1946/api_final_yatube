@@ -3,10 +3,7 @@ from rest_framework import routers
 from django.urls import include, path
 
 from api.v1.views import (
-    CommentViewSet,
-    FollowViewSet,
-    GroupViewSet,
-    PostViewSet,
+    CommentViewSet, FollowViewSet, GroupViewSet, PostViewSet,
 )
 
 router = routers.DefaultRouter()

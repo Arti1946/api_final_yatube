@@ -9,7 +9,7 @@
 
 ### Установка:
 
-Клонировать репозиторий и перейти в него в командной строке:
+- Клонировать репозиторий и перейти в него в командной строке:
 
 ```
 git clone https://github.com/Arti1946/api_final_yatube.git
@@ -19,7 +19,7 @@ git clone https://github.com/Arti1946/api_final_yatube.git
 cd api_final_yatube
 ```
 
-Cоздать и активировать виртуальное окружение:
+- Cоздать и активировать виртуальное окружение:
 
 ```
 python -m venv env
@@ -33,19 +33,19 @@ source venv/Scripts/activate
 python -m pip install --upgrade pip
 ```
 
-Установить зависимости из файла requirements.txt:
+- Установить зависимости из файла requirements.txt:
 
 ```
 pip install -r requirements.txt
 ```
 
-Выполнить миграции:
+- Выполнить миграции:
 
 ```
 python manage.py migrate
 ```
 
-Запустить проект:
+- Запустить проект:
 
 ```
 python manage.py runserver
@@ -53,13 +53,13 @@ python manage.py runserver
 
 ### Примеры запросов к сервису:
 
-Получение всех постов от любого пользователя методом GET:
+- Получение всех постов от любого пользователя методом GET:
 
 ```
 http://127.0.0.1:8000/api/v1/posts/
 ```
 
-Регистрация пользователя методом Post:
+- Регистрация пользователя методом Post:
 
 ```
 http://127.0.0.1:8000/auth/users
